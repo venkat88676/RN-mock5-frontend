@@ -14,7 +14,7 @@
     </nav>
     <div id="login-container">
       <div id="toggle">
-        <button id="loginToggle">Login</button>
+        <button id="loginToggle" class="activated">Login</button>
         <button id="signupToggle">Sign UP</button>
       </div>
       <div id="login-form" class="activated">
@@ -41,16 +41,22 @@
 <script>
   let loginToggle = document.getElementById("loginToggle");
   let loginCont = document.getElementById("login-form");
+  let signupToggle = document.getElementById("signupToggle");
+  let signupCont = document.getElementById("signup-form");
+
   loginToggle.addEventListener("click", () => {
     loginCont.classList.toggle("activated");
     signupCont.classList.toggle("activated");
+    loginToggle.classList.toggle("activated")
+    signupToggle.classList.toggle("activated")
+
   });
-  let signupToggle = document.getElementById("signupToggle");
-  let signupCont = document.getElementById("signup-form");
 
   signupToggle.addEventListener("click", () => {
     signupCont.classList.toggle("activated");
     loginCont.classList.toggle("activated");
+    loginToggle.classList.toggle("activated")
+    signupToggle.classList.toggle("activated")
   });
 
   let loginBtn = document.getElementById("loginBtn");

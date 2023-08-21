@@ -86,7 +86,7 @@
       let location = document.createElement("p");
       location.innerText = "Location:- " + element.location;
       let date = document.createElement("p");
-      date.innerText = "Date:-" + element.date;
+      date.innerText = "Date:-" + new Date(element.date).toISOString().split('T')[0];
       let slots = document.createElement("p");
       slots.innerText = "Slots" + element.slots;
       let fee = document.createElement("p");
