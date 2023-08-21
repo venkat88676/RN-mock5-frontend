@@ -10,7 +10,7 @@
     <nav>
       <a href="./index.html">Home</a>
       <a href="./dashboard.html">Dashborad</a>
-      <a href="./onborad.html">Onboard Form</a>
+      <a href="./onboard.html">Onboard Form</a>
     </nav>
     <div id="onboard-form">
       <input type="text" id="name" placeholder="Name" />
@@ -47,7 +47,7 @@
       fee:document.getElementById("fee").value,
     };
     console.log(payload)
-    fetch("http://localhost:8000/doctor", {
+    fetch("https://odd-elk-ring.cyclic.cloud/doctor", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

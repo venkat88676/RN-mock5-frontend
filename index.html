@@ -10,7 +10,7 @@
     <nav>
       <a href="./index.html">Home</a>
       <a href="./dashboard.html">Dashborad</a>
-      <a href="./onborad.html">Onboard Form</a>
+      <a href="./onboard.html">Onboard Form</a>
     </nav>
     <div id="login-container">
       <div id="toggle">
@@ -60,7 +60,7 @@
       email: document.getElementById("loginEmail").value,
       password: document.getElementById("loginPassword").value,
     };
-    fetch("http://localhost:8000/user/login", {
+    fetch("https://odd-elk-ring.cyclic.cloud/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +83,7 @@
       email: document.getElementById("signEmail").value,
       password: document.getElementById("signPassword").value,
     };
-    fetch("http://localhost:8000/user/register", {
+    fetch("https://odd-elk-ring.cyclic.cloud/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

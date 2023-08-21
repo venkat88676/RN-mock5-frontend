@@ -11,11 +11,13 @@ a{
 #login-container {
     padding: 10px;
     text-align: center;
-    width: 10%;
+    width: 30%;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
+   
    
 }
+
 input{
     padding: 5px;
     margin: 5px;
@@ -30,12 +32,12 @@ input{
 }
 #login-form.activated,#signup-form.activated{
     border: .2px solid black;
-    max-width: 500px;
+    max-width: 400px;
 }
 
 #onboard-form{
     border: .2px solid black;
-    width: 50%;
+    width: 40%;
     margin:auto;
     margin-top: 5%;
     padding: 10px;
@@ -55,4 +57,11 @@ img{
     text-align: center;
     padding: 10px;
     margin: 10px;
+}
+#filter{
+    display: flex;;
+    justify-content: space-between;
+}
+#filter input{
+    width: 20%;
 }
