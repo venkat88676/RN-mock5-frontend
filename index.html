@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./dashboard.html">Dashborad</a>
+      <a href="./onborad.html">Onboard Form</a>
+    </nav>
+    <div id="login-container">
+      <div id="toggle">
+        <button id="loginToggle">Login</button>
+        <button id="signupToggle">Sign UP</button>
+      </div>
+      <div id="login-form" class="activated">
+        <h3>Login</h3>
+        <input type="email" id="loginEmail" placeholder="Email" />
+        <input type="password" id="loginPassword" placeholder="password" />
+        <button id="loginBtn">Login</button>
+      </div>
+      <div id="signup-form">
+        <h3>Sign Up</h3>
+        <input type="email" id="signEmail" placeholder="Email" />
+        <input type="password" id="signPassword" placeholder="password" />
+        <input
+          type="password"
+          id="signConfirm"
+          placeholder="Confirm password"
+        />
+        <button id="signupBtn">Sign Up</button>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let loginToggle = document.getElementById("loginToggle");
+  let loginCont = document.getElementById("login-form");
+  loginToggle.addEventListener("click", () => {
+    loginCont.classList.toggle("activated");
+    signupCont.classList.toggle("activated");
+  });
+  let signupToggle = document.getElementById("signupToggle");
+  let signupCont = document.getElementById("signup-form");
+
+  signupToggle.addEventListener("click", () => {
+    signupCont.classList.toggle("activated");
+    loginCont.classList.toggle("activated");
+  });
+
+  let loginBtn = document.getElementById("loginBtn");
+
+  loginBtn.addEventListener("click", () => {
+    let payload = {
+      email: document.getElementById("loginEmail").value,
+      password: document.getElementById("loginPassword").value,
+    };
+    fetch("http://localhost:8000/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.token);
+        alert("login successfully")
+        window.location.href = "./onboard.html";
+      })
+      .catch((err) => console.log(err));
+  });
+
+  let signupBtn = document.getElementById("signupBtn");
+  signupBtn.addEventListener("click", () => {
+    let payload = {
+      email: document.getElementById("signEmail").value,
+      password: document.getElementById("signPassword").value,
+    };
+    fetch("http://localhost:8000/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        alert("Registeration Done")
+      })
+      .catch((err) => console.log(err));
+  });
+</script>

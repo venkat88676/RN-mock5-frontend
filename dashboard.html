@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="./dashboard.html">Dashborad</a>
+        <a href="./onborad.html">Onboard Form</a>
+      </nav>
+      <div id="container">
+
+      </div>
+</body>
+</html>
+
+<script>
+    let container=document.getElementById("container");
+    fetchData()
+    function fetchData(){
+        fetch("http://localhost:8000/doctor")
+        .then((res)=>res.json())
+        .then((data)=>{
+            console.log(data);
+            display(data)
+        })
+        .catch((err)=>console.log(err))
+    }
+    function display(data){
+        container.innerText=null
+        data.forEach(element => {
+            let card=document.createElement("div");
+            card.setAttribute("id","card")
+            let img=document.createElement("img");
+            img.src=element.image
+            let name=document.createElement("h3");
+            name.innerText="Name:- "+element.name
+            let specialization=document.createElement("p");
+            specialization.innerText="specialization:- "+element.specialization;
+            let experience=document.createElement("p");
+            experience.innerText="Exp:-"+element.experience;
+            let location=document.createElement("p");
+            location.innerText="Location:- "+element.location
+            let date=document.createElement("p");
+            date.innerText="Date:-"+element.date;
+            let slots=document.createElement("p");
+            slots.innerText="Slots"+element.slots;
+            let fee=document.createElement("p");
+            fee.innerText="Fee:- "+element.fee;
+            let editBtn=document.createElement("button");
+            editBtn.innerText="EDIT"
+            let deleteBtn=document.createElement("button");
+            deleteBtn.innerText="DELETE"
+            card.append(img,name,specialization,experience,location,date,slots,fee,editBtn,deleteBtn);
+            container.append(card)
+
+        });
+    }
+</script>

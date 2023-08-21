@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./dashboard.html">Dashborad</a>
+      <a href="./onborad.html">Onboard Form</a>
+    </nav>
+    <div id="onboard-form">
+      <input type="text" id="name" placeholder="Name" />
+      <input type="text" id="image" placeholder="Image url" />
+      <select name="" id="spec">
+        <option value="">Select Specialization</option>
+        <option value="Cardiologist">Cardiologist</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="Pediatrician">Pediatrician</option>
+        <option value="Psychiatrist">Psychiatrist</option>
+      </select>
+      <input type="number"id="exp" placeholder="Experience" />
+      <input type="text" id="location" placeholder="Location" />
+      <input type="date" id="date" placeholder="Date" />
+      <input type="number" id="slots" placeholder="Slots" />
+      <input type="number" id="fee" placeholder="Fee" />
+      <button id="submitBtn">Submit</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  let submitBtn = document.getElementById("submitBtn");
+
+  submitBtn.addEventListener("click", () => {
+    let payload = {
+      name:document.getElementById("name").value,
+      image:document.getElementById("image").value,
+      specialization:document.getElementById("spec").value,
+      experience:document.getElementById("exp").value,
+      location:document.getElementById("location").value,
+      date:document.getElementById("date").value,
+      slots:document.getElementById("slots").value,
+      fee:document.getElementById("fee").value,
+    };
+    console.log(payload)
+    fetch("http://localhost:8000/doctor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        alert("submitted successfully");
+       
+      })
+      .catch((err) => console.log(err));
+  });
+</script>
